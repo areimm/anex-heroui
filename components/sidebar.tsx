@@ -1,81 +1,90 @@
 "use client";
-import { Home, Inbox, Settings, User } from "lucide-react";
-import { SidebarProvider } from "@/components/ui/sidebar";
-import React from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { Home, Users } from "lucide-react";
 
+import { SidebarProvider } from "@/components/ui/sidebar";
+import Image from "next/image";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  // SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { Listbox, ListboxItem } from "@heroui/react";
+import { Divider } from "@heroui/react";
 
-// Menu items.
+// Menü öğeleri
 const items = [
-  {
-    title: "Home",
-    url: "/",
-    icon: Home,
-  },
-  {
-    title: "Users",
-    url: "/users",
-    icon: Inbox,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-
-  {
-    title: "Profile",
-    url: "/profile",
-    icon: User,
-  },
+  { title: "Home", url: "/", icon: Home, key: "home" },
+  { title: "Users", url: "/users", icon: Users, key: "users" },
 ];
 
 export default function AppSidebar() {
+  const pathname = usePathname();
+  const [selectedKeys, setSelectedKeys] = useState(new Set(["home"]));
+
+  useEffect(() => {
+    const currentItem = items.find((item) => item.url === pathname);
+    if (currentItem) {
+      setSelectedKeys(new Set([currentItem.key]));
+    }
+  }, [pathname]);
+
   return (
     <SidebarProvider>
-      <Sidebar className="border-r-4 border-gray-700 w-64">
+      <Sidebar className="w-64 md:w-20 lg:w-64 transition-all duration-300">
         <SidebarContent className="text-white bg-anex-bg">
-          {/* Logo Section */}
-
-          {/* Menu Section */}
+          {/* Menü Bölümü */}
           <SidebarGroup>
             <SidebarGroupContent className="rounded-lg bg-anex-side pb-2">
-              <div className="flex justify-center items-center p-4 border-b border-gray-400">
+              {/* Logo Bölümü */}
+              <div className="flex justify-center items-center mt-3">
                 <Image
                   src="/anex.png"
                   alt="Logo"
                   width={100}
                   height={40}
-                  className="h-10 w-auto"
+                  className="h-10 w-auto md:hidden lg:block"
                 />
               </div>
-              
-              {/* <SidebarGroupLabel className="text-white">
-                Application
-              </SidebarGroupLabel> */}
 
-              <SidebarMenu className="mt-1">
+              <Divider className="my-2" />
+              <Listbox
+                disallowEmptySelection
+                aria-label="Sidebar menu"
+                // selectedKeys={selectedKeys}
+                selectionMode="single"
+                variant="flat"
+                onSelectionChange={(keys) =>
+                  setSelectedKeys(new Set(Array.from(keys) as string[]))
+                }
+                classNames={{
+                  base: "w-full",
+                }}
+                disableAnimation
+              >
                 {items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <a href={item.url} className="flex items-center gap-2">
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </a>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
+                  <ListboxItem
+                    key={item.key}
+                    className={`flex justify-center md:justify-start px-4 py-2 rounded-lg transition ${
+                      selectedKeys.has(item.key)
+                        ? "bg-gray-700 text-white font-semibold"
+                        : "bg-transparent"
+                    }`}
+                  >
+                    <a
+                      href={item.url}
+                      className="flex items-center gap-2 w-full"
+                    >
+                      <item.icon className="w-5 h-5" />
+                      <span className="hidden md:hidden lg:inline">
+                        {item.title}
+                      </span>
+                    </a>
+                  </ListboxItem>
                 ))}
-              </SidebarMenu>
+              </Listbox>
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>

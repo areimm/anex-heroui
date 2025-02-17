@@ -32,6 +32,7 @@ const config: Config = {
 				foreground: 'var(--anex-primary)',
 				side: 'var(--anex-side)',
 				bg: 'var(--anex-bg)',
+				accent:'var(--anex-accent)',
 			},
 			
 			areim: {
