@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { Home, Users } from "lucide-react";
+import { Home, Users,MailCheck   } from "lucide-react";
 
 import { SidebarProvider } from "@/components/ui/sidebar";
 import Image from "next/image";
@@ -18,6 +18,7 @@ import { Divider } from "@heroui/react";
 const items = [
   { title: "Home", url: "/", icon: Home, key: "home" },
   { title: "Users", url: "/users", icon: Users, key: "users" },
+  { title: "Tasks", url: "/tasks", icon: MailCheck , key: "tasks" },
 ];
 
 export default function AppSidebar() {

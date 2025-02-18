@@ -37,7 +37,7 @@ const chartConfig = {
 
 export default function DareaChart() {
   return (
-    <Card className="bg-anex-foreground border-gray-800 text-white">
+    <Card className="bg-areim-800 border-gray-800 text-white">
       <CardHeader>
         <CardTitle>Area Chart - Gradient</CardTitle>
         <CardDescription>

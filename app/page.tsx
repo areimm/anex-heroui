@@ -5,12 +5,13 @@ import Chart from "@/components/data-chart";
 import MonthChart from "@/components/month-chart";
 import DareaChart from "@/components/area-chart";
 import PieChart from "@/components/pie-chart";
+import Negative from "@/components/negative-chart"
 
   
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-[250px_1fr] min-h-screen bg-anex-bg text-white">
+    <div className="dark grid grid-cols-[250px_1fr] min-h-screen bg-anex-bg text-white">
       <aside className="text-white p-4">
         <AppSidebar  />
    
@@ -20,6 +21,10 @@ export default function Home() {
           <MonthChart />
           <DareaChart />
           <PieChart />
+          <Negative/>
+        </div>
+        <div>
+          <Chart/>
         </div>
         
        
