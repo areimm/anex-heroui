@@ -133,7 +133,7 @@ export default function DataTable() {
           Total {filteredUsers.length} users
         </span>
         <Pagination
-         initialPage={1}
+         initialPage={0}
           isCompact
           showControls
           showShadow

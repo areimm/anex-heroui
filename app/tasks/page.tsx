@@ -70,7 +70,7 @@ export default function TasksPage() {
         {/* Sayfa Başlığı ve Buton */}
         <div className="items-center justify-between mb-6 grid grid-cols-3 gap-4">
           <Input
-            classNames={{ inputWrapper: "bg-anex-foreground" }}
+            classNames={{ inputWrapper: "bg-anex-side" }}
             isClearable
             placeholder="Search by name..."
             className="flex-1 col-span-2"
