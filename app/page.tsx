@@ -16,8 +16,8 @@ export default function Home() {
         <AppSidebar  />
    
       </aside>
-      <main className="p-8">
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 mt-4" >
+      <main className="px-3">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4 mt-2" >
           <MonthChart />
           <DareaChart />
           <PieChart />
@@ -26,8 +26,6 @@ export default function Home() {
         <div>
           <Chart/>
         </div>
-        
-       
       </main>
     </div>
   );

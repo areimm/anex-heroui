@@ -49,7 +49,7 @@ export default function DataTable() {
   const [page, setPage] = useState(1);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const rowsPerPage = 5;
+  const rowsPerPage = 10; // Updated to 10
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -73,10 +73,10 @@ export default function DataTable() {
   };
 
   return (
-    <div className="dark w-full p-6 rounded-lg">
-      <div className="flex flex-col md:flex-row gap-4 mb-4 bg-anex-bg p-3 rounded-lg">
+    <div className="dark w-full h-full p-3 rounded-lg overflow-auto">
+      <div className="flex flex-col md:flex-row gap-4 mb-4 bg-anex-bg rounded-lg">
         <Input
-          classNames={{ inputWrapper: "bg-anex-foreground" }}
+          classNames={{ inputWrapper: "bg-anex-side" }}
           isClearable
           placeholder="Search by name..."
           value={filterValue}
@@ -85,16 +85,16 @@ export default function DataTable() {
           className="flex-1"
         />
         <DateRangePicker
-          classNames={{ inputWrapper: "bg-anex-foreground" }}
+          classNames={{ inputWrapper: "bg-anex-side" }}
           labelPlacement="outside"
           className="dark max-w-xs flex-1"
         />
-        <Button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 flex-1">
+        <Button className="bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-950 flex-1 h-full">
           Search
         </Button>
       </div>
       <Table
-        classNames={{ wrapper: "bg-anex-bg", th: "bg-anex-foreground" }}
+        classNames={{ wrapper: "bg-anex-bg", th: "bg-anex-side" }}
         isStriped
         aria-label="User Data Table"
       >
@@ -133,11 +133,12 @@ export default function DataTable() {
           Total {filteredUsers.length} users
         </span>
         <Pagination
+         initialPage={1}
           isCompact
           showControls
           showShadow
           color="default"
-          page={page}
+          page={pages}
           total={pages}
           onChange={setPage}
         />
