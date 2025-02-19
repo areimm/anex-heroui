@@ -14,10 +14,10 @@ export default function TaskModal({ isOpen, onClose, title, description, status,
   return (
     <Modal backdrop="blur" className="dark text-white" isOpen={isOpen} onClose={onClose}>
       <ModalContent>
-        {/* Modal Başlık */}
+        
         <ModalHeader>Görev Detayları</ModalHeader>
 
-        {/* Modal İçeriği */}
+     
         <ModalBody>
           <div className="flex flex-col gap-3">
             <Input label="Görev Başlığı" value={title} readOnly />

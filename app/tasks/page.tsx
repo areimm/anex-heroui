@@ -43,17 +43,17 @@ export default function TasksPage() {
     },
   ]);
 
-  // Drag & Drop işlemi tamamlandığında çalışacak fonksiyon
+  // 📌 Drag & Drop işlemi tamamlandığında çalışacak fonksiyon (Görevlerin sırası değişmeyecek)
   const handleDragEnd = (result: any) => {
     if (!result.destination) return; // Eğer bırakılacak yer yoksa, işlem yapma
 
     const updatedTasks = [...tasks];
-    const draggedTask = updatedTasks.find(
+    const draggedTaskIndex = updatedTasks.findIndex(
       (task) => task.id === parseInt(result.draggableId)
     );
 
-    if (draggedTask) {
-      draggedTask.status = result.destination.droppableId; // Yeni sütuna taşı
+    if (draggedTaskIndex !== -1) {
+      updatedTasks[draggedTaskIndex].status = result.destination.droppableId; // Yeni sütuna taşı
       setTasks(updatedTasks);
     }
   };
@@ -74,14 +74,14 @@ export default function TasksPage() {
             isClearable
             placeholder="Search by name..."
             className="flex-1 col-span-2"
-          />
+          /> 
           <Button className="flex items-center gap-2 col-span-1">
             <Plus className="w-5 h-5" />
             Yeni Görev Ekle
           </Button>
         </div>
 
-        {/* 📌 Drag & Drop Context */}
+        {/* Drag & Drop Context */}
         <DragDropContext onDragEnd={handleDragEnd}>
           {/* Kanban Tahtası */}
           <div className="grid grid-cols-3 gap-4">
@@ -102,7 +102,7 @@ export default function TasksPage() {
                     </h2>
 
                     {tasks
-                      .filter((task) => task.status === status)
+                      .filter((task) => task.status === status) // Sıralama kaldırıldı
                       .map((task, index) => (
                         <Draggable
                           key={task.id.toString()}
@@ -116,7 +116,7 @@ export default function TasksPage() {
                               {...provided.dragHandleProps}
                               className="mb-2"
                             >
-                              <TaskCard {...task} />
+                              <TaskCard {...task} showDate={true} />
                             </div>
                           )}
                         </Draggable>

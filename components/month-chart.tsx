@@ -41,7 +41,7 @@ const chartConfig = {
 
 export default function Component() {
   return (
-    <Card className="bg-areim-800 border-gray-800 text-white">
+    <Card className="bg-anex-side border-gray-800 text-white">
       <CardHeader>
         <CardTitle>Bar Chart - Stacked + Legend</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
