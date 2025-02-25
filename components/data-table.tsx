@@ -50,7 +50,7 @@ export default function DataTable() {
   const [page, setPage] = useState(1);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const rowsPerPage = 10; // Updated to 10
+  const rowsPerPage = 5; // Updated to 10
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")

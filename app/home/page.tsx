@@ -1,9 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { Button } from "@heroui/button";
 import AppSidebar from "@/components/sidebar";
 import Chart from "@/components/data-chart";
 import MonthChart from "@/components/month-chart";
@@ -11,27 +7,10 @@ import DareaChart from "@/components/area-chart";
 import PieChart from "@/components/pie-chart";
 import Negative from "@/components/negative-chart";
 import { Spinner } from "@heroui/react";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Home() {
-  const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Kullanıcı giriş kontrolü
-  useEffect(() => {
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
-
-    if (isLoggedIn !== "true") {
-      router.replace("/"); // Kullanıcı giriş yapmamışsa login'e yönlendir
-    } else {
-      setIsLoading(false); // Yükleme tamamlandıysa sayfayı göster
-    }
-  }, [router]);
-
-  // Logout fonksiyonu
-  const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    router.push("/");
-  };
+  const { isLoading } = useAuth();
 
   if (isLoading) {
     // Yönlendirme sırasında yükleme ekranı göster

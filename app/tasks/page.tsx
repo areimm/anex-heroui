@@ -5,9 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import AppSidebar from "@/components/sidebar";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import { DateRangePicker, Input } from "@heroui/react";
+import { Input, Spinner } from "@heroui/react";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function TasksPage() {
+  // 🟢 Auth kontrolü en üstte yapılmalı
+  const { isLoading } = useAuth();
+
+  // 🟢 Tüm hooklar, render'ın başında çağrılmalı
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -43,9 +48,18 @@ export default function TasksPage() {
     },
   ]);
 
-  // Drag & Drop işlemi tamamlandığında çalışacak fonksiyon
+  // 🟢 Auth kontrolü sonrası loading ekranı göster
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-anex-bg text-white">
+        <Spinner color="primary" />
+      </div>
+    );
+  }
+
+  // 🟢 Drag & Drop işlemi
   const handleDragEnd = (result: any) => {
-    if (!result.destination) return; // Eğer bırakılacak yer yoksa, işlem yapma
+    if (!result.destination) return;
 
     const updatedTasks = [...tasks];
     const draggedTask = updatedTasks.find(
@@ -53,7 +67,7 @@ export default function TasksPage() {
     );
 
     if (draggedTask) {
-      draggedTask.status = result.destination.droppableId; // Yeni sütuna taşı
+      draggedTask.status = result.destination.droppableId;
       setTasks(updatedTasks);
     }
   };
@@ -67,7 +81,7 @@ export default function TasksPage() {
 
       {/* Ana İçerik */}
       <main className="p-4">
-        {/* Sayfa Başlığı ve Buton */}
+        {/* Başlık ve Yeni Görev Ekle Butonu */}
         <div className="items-center justify-between mb-6 grid grid-cols-3 gap-4">
           <Input
             classNames={{ inputWrapper: "bg-anex-side" }}
@@ -81,9 +95,8 @@ export default function TasksPage() {
           </Button>
         </div>
 
-        {/*Drag & Drop Context */}
+        {/* Drag & Drop Context */}
         <DragDropContext onDragEnd={handleDragEnd}>
-          {/* Kanban Tahtası */}
           <div className="grid grid-cols-3 gap-4">
             {["todo", "inprogress", "done"].map((status) => (
               <Droppable key={status} droppableId={status}>
@@ -121,7 +134,6 @@ export default function TasksPage() {
                           )}
                         </Draggable>
                       ))}
-
                     {provided.placeholder}
                   </div>
                 )}
