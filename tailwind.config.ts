@@ -22,12 +22,17 @@ const config: Config = {
   		},
 	
   		colors: {
+			'gradient-start': '#2a0845',
+            'gradient-end': '#6441A5',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
   			},
+			backgroundImage: {
+				'custom-gradient': 'linear-gradient(to right, #2a0845, #6441A5)',
+			  },
 			anex: {
 				foreground: 'var(--anex-primary)',
 				side: 'var(--anex-side)',

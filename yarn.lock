@@ -626,6 +626,11 @@
   resolved "https://registry.npmjs.org/@heroui/react-rsc-utils/-/react-rsc-utils-2.1.2.tgz"
   integrity sha512-5qaYUj0eX+y8OFvPsv01RdfHZv8Z/do+3tdaDmq/uNFsyDc+lgea9PyqVZbhv6nf4ido/hUlPDB6KAGqiAeKwQ==
 
+"@heroui/react-rsc-utils@2.1.5":
+  version "2.1.5"
+  resolved "https://registry.npmjs.org/@heroui/react-rsc-utils/-/react-rsc-utils-2.1.5.tgz"
+  integrity sha512-vSGU2Ua7lnaPfpd+jsrCV4EdrYYnViSDF1tDDplnAZmItNV0qrEMdWe8l5ljwV658fr2LayN/hFjlhADEEjXSg==
+
 "@heroui/react-utils@2.1.4":
   version "2.1.4"
   resolved "https://registry.npmjs.org/@heroui/react-utils/-/react-utils-2.1.4.tgz"
@@ -633,6 +638,14 @@
   dependencies:
     "@heroui/react-rsc-utils" "2.1.2"
     "@heroui/shared-utils" "2.1.3"
+
+"@heroui/react-utils@2.1.7":
+  version "2.1.7"
+  resolved "https://registry.npmjs.org/@heroui/react-utils/-/react-utils-2.1.7.tgz"
+  integrity sha512-ZjiRMIh5Mg7fhs1QDjhRvq19HncATm3FIE+mtM3wWT7MwEr46KwHbHC2rhuGlBz9cYHCnJxGMibMAnUgl7qeaQ==
+  dependencies:
+    "@heroui/react-rsc-utils" "2.1.5"
+    "@heroui/shared-utils" "2.1.6"
 
 "@heroui/react@^2.6.14":
   version "2.6.14"
@@ -736,10 +749,20 @@
   resolved "https://registry.npmjs.org/@heroui/shared-icons/-/shared-icons-2.1.2.tgz"
   integrity sha512-CUHbRMvXLVXjri+N5AhsTNNL49DXvGLidJ9qSyLQr0uWxt6GVb4/Hd9Lu4CjwrfWxyMwblm9f3BqUUFOC/FyVg==
 
+"@heroui/shared-icons@2.1.5":
+  version "2.1.5"
+  resolved "https://registry.npmjs.org/@heroui/shared-icons/-/shared-icons-2.1.5.tgz"
+  integrity sha512-21ywBBmHGSuCQMicgVTHAjEeeogmTLeHPRlHD52BfjZ22/Buan3uYUCAJ3Vrcvp/CuBxv1V7PnB2Osr+OV2Tbg==
+
 "@heroui/shared-utils@2.1.3":
   version "2.1.3"
   resolved "https://registry.npmjs.org/@heroui/shared-utils/-/shared-utils-2.1.3.tgz"
   integrity sha512-MNpo+jcu6xyicSRyxWgL4rNw4xH0XziUR/bhs01GydlGhfFN8n/Y4vKAWfL5xamehiEJX1N0IKAbFadt3wlGAA==
+
+"@heroui/shared-utils@2.1.6":
+  version "2.1.6"
+  resolved "https://registry.npmjs.org/@heroui/shared-utils/-/shared-utils-2.1.6.tgz"
+  integrity sha512-Qz6/gyVM+jur+FOnALJBCp6YWt2CCnGu/c3SpxTx7/X9NgqLb+VYZ6XMH1HD9Sf3UzjtHZ/My1Cy6nlw1iO+zw==
 
 "@heroui/skeleton@2.2.6":
   version "2.2.6"
@@ -788,6 +811,16 @@
     "@heroui/shared-utils" "2.1.3"
     "@heroui/system-rsc" "2.3.6"
 
+"@heroui/spinner@2.2.10":
+  version "2.2.10"
+  resolved "https://registry.npmjs.org/@heroui/spinner/-/spinner-2.2.10.tgz"
+  integrity sha512-rQ74yau5LxhzpMsTYsBz92+lZKE4uKRnsW39t/v8a98zA7aWwuY3E5HMM2abuznQpYPioGmlYzluIcu69uLJFQ==
+  dependencies:
+    "@heroui/react-utils" "2.1.7"
+    "@heroui/shared-utils" "2.1.6"
+    "@heroui/system" "2.4.10"
+    "@heroui/system-rsc" "2.3.9"
+
 "@heroui/spinner@2.2.7":
   version "2.2.7"
   resolved "https://registry.npmjs.org/@heroui/spinner/-/spinner-2.2.7.tgz"
@@ -821,7 +854,15 @@
     "@react-types/shared" "3.26.0"
     clsx "^1.2.1"
 
-"@heroui/system@>=2.4.0", "@heroui/system@2.4.7":
+"@heroui/system-rsc@2.3.9":
+  version "2.3.9"
+  resolved "https://registry.npmjs.org/@heroui/system-rsc/-/system-rsc-2.3.9.tgz"
+  integrity sha512-CF4MMKKkBSHxF+BQ9QfdhXnRio5nM6iOY1g9L+xdbJPmSdWHqm0iAsUpgZX7gs4m8caU/RKkjuZTcq46XfSyug==
+  dependencies:
+    "@react-types/shared" "3.27.0"
+    clsx "^1.2.1"
+
+"@heroui/system@>=2.4.0", "@heroui/system@>=2.4.7", "@heroui/system@2.4.7":
   version "2.4.7"
   resolved "https://registry.npmjs.org/@heroui/system/-/system-2.4.7.tgz"
   integrity sha512-5gWQhHr9ch/amUTkjDb2lHdVHU0PnURqbq2sPasGngi+LJUGqbApOY8n0rp2/RYDhEeR6NmWrSixZTmznBnfxg==
@@ -834,6 +875,20 @@
     "@react-aria/utils" "3.26.0"
     "@react-stately/utils" "3.10.5"
     "@react-types/datepicker" "3.9.0"
+
+"@heroui/system@2.4.10":
+  version "2.4.10"
+  resolved "https://registry.npmjs.org/@heroui/system/-/system-2.4.10.tgz"
+  integrity sha512-HSOjIInlpkHO38OY/QVLVKdk+wPmjfkban4QNcOnK7NnNs3HmnQYt4N+xdrsPH2LqyKsEwc3Qq5VVdkH01FcLQ==
+  dependencies:
+    "@heroui/react-utils" "2.1.7"
+    "@heroui/system-rsc" "2.3.9"
+    "@internationalized/date" "3.7.0"
+    "@react-aria/i18n" "3.12.5"
+    "@react-aria/overlays" "3.25.0"
+    "@react-aria/utils" "3.27.0"
+    "@react-stately/utils" "3.10.5"
+    "@react-types/datepicker" "3.10.0"
 
 "@heroui/table@2.2.9":
   version "2.2.9"
@@ -875,7 +930,7 @@
     "@react-types/tabs" "3.3.11"
     scroll-into-view-if-needed "3.0.10"
 
-"@heroui/theme@>=2.4.0", "@heroui/theme@>=2.4.3", "@heroui/theme@2.4.6":
+"@heroui/theme@>=2.4.0", "@heroui/theme@>=2.4.3", "@heroui/theme@>=2.4.6", "@heroui/theme@2.4.6":
   version "2.4.6"
   resolved "https://registry.npmjs.org/@heroui/theme/-/theme-2.4.6.tgz"
   integrity sha512-VcmeMRxL3wnKk1o6gzeQehEcXyoKyvqLYr+iRFIrMZZO1kG5bvuX+CWDVovfmLRLK1MuwuhYjm6aJvre9AZAfA==
@@ -888,6 +943,22 @@
     flat "^5.0.2"
     tailwind-merge "^2.5.2"
     tailwind-variants "^0.1.20"
+
+"@heroui/toast@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/@heroui/toast/-/toast-2.0.3.tgz"
+  integrity sha512-raCLspRNpzSf8cZJ/VLBy5jBsxPxFJpLzoygujIDE48WKvxwdSD/16kfwdnUApU+lLOPe70CkJXm88qBKnLZdQ==
+  dependencies:
+    "@heroui/react-utils" "2.1.7"
+    "@heroui/shared-icons" "2.1.5"
+    "@heroui/shared-utils" "2.1.6"
+    "@heroui/spinner" "2.2.10"
+    "@heroui/use-is-mobile" "2.2.6"
+    "@react-aria/interactions" "3.23.0"
+    "@react-aria/toast" "3.0.0-beta.19"
+    "@react-aria/utils" "3.27.0"
+    "@react-stately/toast" "3.0.0-beta.7"
+    "@react-stately/utils" "3.10.5"
 
 "@heroui/tooltip@2.2.8":
   version "2.2.8"
@@ -1035,6 +1106,13 @@
   dependencies:
     "@react-aria/ssr" "3.9.7"
 
+"@heroui/use-is-mobile@2.2.6":
+  version "2.2.6"
+  resolved "https://registry.npmjs.org/@heroui/use-is-mobile/-/use-is-mobile-2.2.6.tgz"
+  integrity sha512-gUSM0prqqjxUe1JP1coGVlpTeX+NIRhq9T+qUZPYeYsD8HXnwx3MyvfM4TYTUKRxa6XvsefW2DegV8uUYpxz8Q==
+  dependencies:
+    "@react-aria/ssr" "3.9.7"
+
 "@heroui/use-is-mounted@2.1.2":
   version "2.1.2"
   resolved "https://registry.npmjs.org/@heroui/use-is-mounted/-/use-is-mounted-2.1.2.tgz"
@@ -1079,7 +1157,7 @@
     "@react-aria/focus" "3.19.0"
     "@react-aria/utils" "3.26.0"
 
-"@internationalized/date@^3.6.0", "@internationalized/date@^3.7.0":
+"@internationalized/date@^3.6.0", "@internationalized/date@^3.7.0", "@internationalized/date@3.7.0":
   version "3.7.0"
   resolved "https://registry.npmjs.org/@internationalized/date/-/date-3.7.0.tgz"
   integrity sha512-VJ5WS3fcVx0bejE/YHfbDKR/yawZgKqn/if+oEeLqNwBtPzVB06olkfcnojTmEMX+gTpH+FlQ69SHNitJ8/erQ==
@@ -2621,6 +2699,20 @@
     "@react-types/shared" "^3.27.0"
     "@swc/helpers" "^0.5.0"
 
+"@react-aria/i18n@^3.12.5", "@react-aria/i18n@3.12.5":
+  version "3.12.5"
+  resolved "https://registry.npmjs.org/@react-aria/i18n/-/i18n-3.12.5.tgz"
+  integrity sha512-ooeop2pTG94PuaHoN2OTk2hpkqVuoqgEYxRvnc1t7DVAtsskfhS/gVOTqyWGsxvwAvRi7m/CnDu6FYdeQ/bK5w==
+  dependencies:
+    "@internationalized/date" "^3.7.0"
+    "@internationalized/message" "^3.1.6"
+    "@internationalized/number" "^3.6.0"
+    "@internationalized/string" "^3.2.5"
+    "@react-aria/ssr" "^3.9.7"
+    "@react-aria/utils" "^3.27.0"
+    "@react-types/shared" "^3.27.0"
+    "@swc/helpers" "^0.5.0"
+
 "@react-aria/i18n@3.12.4":
   version "3.12.4"
   resolved "https://registry.npmjs.org/@react-aria/i18n/-/i18n-3.12.4.tgz"
@@ -2636,6 +2728,16 @@
     "@swc/helpers" "^0.5.0"
 
 "@react-aria/interactions@^3.22.5", "@react-aria/interactions@^3.23.0":
+  version "3.23.0"
+  resolved "https://registry.npmjs.org/@react-aria/interactions/-/interactions-3.23.0.tgz"
+  integrity sha512-0qR1atBIWrb7FzQ+Tmr3s8uH5mQdyRH78n0krYaG8tng9+u1JlSi8DGRSaC9ezKyNB84m7vHT207xnHXGeJ3Fg==
+  dependencies:
+    "@react-aria/ssr" "^3.9.7"
+    "@react-aria/utils" "^3.27.0"
+    "@react-types/shared" "^3.27.0"
+    "@swc/helpers" "^0.5.0"
+
+"@react-aria/interactions@^3.23.0", "@react-aria/interactions@3.23.0":
   version "3.23.0"
   resolved "https://registry.npmjs.org/@react-aria/interactions/-/interactions-3.23.0.tgz"
   integrity sha512-0qR1atBIWrb7FzQ+Tmr3s8uH5mQdyRH78n0krYaG8tng9+u1JlSi8DGRSaC9ezKyNB84m7vHT207xnHXGeJ3Fg==
@@ -2672,6 +2774,16 @@
     "@react-aria/utils" "^3.26.0"
     "@react-types/shared" "^3.26.0"
     "@swc/helpers" "^0.5.0"
+
+"@react-aria/landmark@3.0.0-beta.18":
+  version "3.0.0-beta.18"
+  resolved "https://registry.npmjs.org/@react-aria/landmark/-/landmark-3.0.0-beta.18.tgz"
+  integrity sha512-jFtWL7TYZrKucWNDx6ppUkGSqS2itkjhyLo9MIFqEg2mi4Lc2EoUjI/Gw9xMT+IJgebTcdQeXJpPskspl3Pojg==
+  dependencies:
+    "@react-aria/utils" "^3.27.0"
+    "@react-types/shared" "^3.27.0"
+    "@swc/helpers" "^0.5.0"
+    use-sync-external-store "^1.2.0"
 
 "@react-aria/link@^3.7.7":
   version "3.7.8"
@@ -2806,6 +2918,23 @@
     "@react-types/button" "^3.10.1"
     "@react-types/overlays" "^3.8.11"
     "@react-types/shared" "^3.26.0"
+    "@swc/helpers" "^0.5.0"
+
+"@react-aria/overlays@3.25.0":
+  version "3.25.0"
+  resolved "https://registry.npmjs.org/@react-aria/overlays/-/overlays-3.25.0.tgz"
+  integrity sha512-UEqJJ4duowrD1JvwXpPZreBuK79pbyNjNxFUVpFSskpGEJe3oCWwsSDKz7P1O7xbx5OYp+rDiY8fk/sE5rkaKw==
+  dependencies:
+    "@react-aria/focus" "^3.19.1"
+    "@react-aria/i18n" "^3.12.5"
+    "@react-aria/interactions" "^3.23.0"
+    "@react-aria/ssr" "^3.9.7"
+    "@react-aria/utils" "^3.27.0"
+    "@react-aria/visually-hidden" "^3.8.19"
+    "@react-stately/overlays" "^3.6.13"
+    "@react-types/button" "^3.10.2"
+    "@react-types/overlays" "^3.8.12"
+    "@react-types/shared" "^3.27.0"
     "@swc/helpers" "^0.5.0"
 
 "@react-aria/progress@3.4.18":
@@ -2972,6 +3101,20 @@
     "@react-types/textfield" "^3.10.0"
     "@swc/helpers" "^0.5.0"
 
+"@react-aria/toast@3.0.0-beta.19":
+  version "3.0.0-beta.19"
+  resolved "https://registry.npmjs.org/@react-aria/toast/-/toast-3.0.0-beta.19.tgz"
+  integrity sha512-LCMTcmSmum5CzBk+DIec66q6pJGEl+InQPJdsby7QG/row0ka6wHPvul78HVseN7dzg6G3xVjvHtVPOixkuegA==
+  dependencies:
+    "@react-aria/i18n" "^3.12.5"
+    "@react-aria/interactions" "^3.23.0"
+    "@react-aria/landmark" "3.0.0-beta.18"
+    "@react-aria/utils" "^3.27.0"
+    "@react-stately/toast" "3.0.0-beta.7"
+    "@react-types/button" "^3.10.2"
+    "@react-types/shared" "^3.27.0"
+    "@swc/helpers" "^0.5.0"
+
 "@react-aria/toggle@^3.10.10":
   version "3.10.11"
   resolved "https://registry.npmjs.org/@react-aria/toggle/-/toggle-3.10.11.tgz"
@@ -3009,7 +3152,7 @@
     "@react-types/tooltip" "^3.4.13"
     "@swc/helpers" "^0.5.0"
 
-"@react-aria/utils@^3.26.0", "@react-aria/utils@^3.27.0":
+"@react-aria/utils@^3.26.0", "@react-aria/utils@^3.27.0", "@react-aria/utils@3.27.0":
   version "3.27.0"
   resolved "https://registry.npmjs.org/@react-aria/utils/-/utils-3.27.0.tgz"
   integrity sha512-p681OtApnKOdbeN8ITfnnYqfdHS0z7GE+4l8EXlfLnr70Rp/9xicBO6d2rU+V/B3JujDw2gPWxYKEnEeh0CGCw==
@@ -3397,6 +3540,14 @@
     "@react-types/tabs" "^3.3.11"
     "@swc/helpers" "^0.5.0"
 
+"@react-stately/toast@3.0.0-beta.7":
+  version "3.0.0-beta.7"
+  resolved "https://registry.npmjs.org/@react-stately/toast/-/toast-3.0.0-beta.7.tgz"
+  integrity sha512-+KDkaOS5Y4ApOfiP0HHij4ySwAd1VM9/pI4rVTyHrzkp0R2Q0eBxZ74MpWMpVfJa2lSjb/qEm60tqJ3A+4R/cQ==
+  dependencies:
+    "@swc/helpers" "^0.5.0"
+    use-sync-external-store "^1.2.0"
+
 "@react-stately/toggle@^3.8.0":
   version "3.8.1"
   resolved "https://registry.npmjs.org/@react-stately/toggle/-/toggle-3.8.1.tgz"
@@ -3585,6 +3736,16 @@
     "@react-types/overlays" "^3.8.12"
     "@react-types/shared" "^3.27.0"
 
+"@react-types/datepicker@3.10.0":
+  version "3.10.0"
+  resolved "https://registry.npmjs.org/@react-types/datepicker/-/datepicker-3.10.0.tgz"
+  integrity sha512-Att7y4NedNH1CogMDIX9URXgMLxGbZgnFCZ8oxgFAVndWzbh3TBcc4s7uoJDPvgRMAalq+z+SrlFFeoBeJmvvg==
+  dependencies:
+    "@internationalized/date" "^3.7.0"
+    "@react-types/calendar" "^3.6.0"
+    "@react-types/overlays" "^3.8.12"
+    "@react-types/shared" "^3.27.0"
+
 "@react-types/datepicker@3.9.0":
   version "3.9.0"
   resolved "https://registry.npmjs.org/@react-types/datepicker/-/datepicker-3.9.0.tgz"
@@ -3717,7 +3878,7 @@
   dependencies:
     "@react-types/shared" "^3.26.0"
 
-"@react-types/shared@^3.26.0", "@react-types/shared@^3.27.0":
+"@react-types/shared@^3.26.0", "@react-types/shared@^3.27.0", "@react-types/shared@3.27.0":
   version "3.27.0"
   resolved "https://registry.npmjs.org/@react-types/shared/-/shared-3.27.0.tgz"
   integrity sha512-gvznmLhi6JPEf0bsq7SwRYTHAKKq/wcmKqFez9sRdbED+SPMUmK5omfZ6w3EwUFQHbYUa4zPBYedQ7Knv70RMw==
@@ -5113,7 +5274,7 @@ use-sidecar@^1.1.3:
     detect-node-es "^1.1.0"
     tslib "^2.0.0"
 
-use-sync-external-store@^1.4.0:
+use-sync-external-store@^1.2.0, use-sync-external-store@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.4.0.tgz"
   integrity sha512-9WXSPC5fMv61vaupRkCKCxsPxBocVnwakBEkMIHHpkTTg6icbJtg6jzgtLDm4bl3cSHAca52rYWih0k4K3PfHw==

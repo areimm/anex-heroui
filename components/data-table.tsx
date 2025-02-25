@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { DateRangePicker } from "@heroui/react";
 import { Textarea } from "@heroui/react";
+import { ScrollShadow } from "@heroui/scroll-shadow";
 import {
   Table,
   TableHeader,
@@ -105,27 +106,27 @@ export default function DataTable() {
           <TableColumn>EMAIL</TableColumn>
         </TableHeader>
         <TableBody>
-            {paginatedUsers.map((user) => (
-              <TableRow
-                key={user.id}
-                onClick={() => handleRowClick(user)}
-                className="cursor-pointer"
-              >
-                <TableCell>{user.id}</TableCell>
-                <TableCell>
-                  <User
-                    avatarProps={{
-                      radius: "lg",
-                      src: `https://i.pravatar.cc/150?u=${user.id}`,
-                    }}
-                    name={user.name}
-                    description={user.email}
-                  />
-                </TableCell>
-                <TableCell>{user.username}</TableCell>
-                <TableCell>{user.email}</TableCell>
-              </TableRow>
-            ))}
+          {paginatedUsers.map((user) => (
+            <TableRow
+              key={user.id}
+              onClick={() => handleRowClick(user)}
+              className="cursor-pointer"
+            >
+              <TableCell>{user.id}</TableCell>
+              <TableCell>
+                <User
+                  avatarProps={{
+                    radius: "lg",
+                    src: `https://i.pravatar.cc/150?u=${user.id}`,
+                  }}
+                  name={user.name}
+                  description={user.email}
+                />
+              </TableCell>
+              <TableCell>{user.username}</TableCell>
+              <TableCell>{user.email}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
       <div className="flex justify-between items-center mt-4">
@@ -133,7 +134,7 @@ export default function DataTable() {
           Total {filteredUsers.length} users
         </span>
         <Pagination
-         initialPage={0}
+          initialPage={0}
           isCompact
           showControls
           showShadow
@@ -145,50 +146,56 @@ export default function DataTable() {
       </div>
 
       {/* Modal */}
-      <Modal
-        backdrop="blur"
-        className="dark text-white"
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      >
-        <ModalContent>
-          <ModalHeader>User Details</ModalHeader>
-          <ModalBody>
-            {selectedUser && (
-              <div className="flex flex-col gap-2">
-                <Input label="Name" value={selectedUser.name} readOnly />
-                <Input
-                  label="Username"
-                  value={selectedUser.username}
-                  readOnly
-                />
-                <Input label="Email" value={selectedUser.email} readOnly />
-                <Input label="Phone" value={selectedUser.phone} readOnly />
-                <Input label="Website" value={selectedUser.website} readOnly />
-                <Textarea
-                  label="Address"
-                  value={
-                    selectedUser.address.city +
-                    +selectedUser.address.street +
-                    selectedUser.address.suite +
-                    selectedUser.address.zipcode
-                  }
-                  readOnly
-                />
-              </div>
-            )}
-          </ModalBody>
-          <ModalFooter>
-            <Button
-              className="w-full"
-              color="danger"
-              onClick={() => setIsModalOpen(false)}
-            >
-              Close
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      <ScrollShadow className="w-[300px] h-[400px]">
+        <Modal
+          backdrop="blur"
+          className="dark text-white"
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        >
+          <ModalContent>
+            <ModalHeader>User Details</ModalHeader>
+            <ModalBody>
+              {selectedUser && (
+                <div className="flex flex-col gap-2">
+                  <Input label="Name" value={selectedUser.name} readOnly />
+                  <Input
+                    label="Username"
+                    value={selectedUser.username}
+                    readOnly
+                  />
+                  <Input label="Email" value={selectedUser.email} readOnly />
+                  <Input label="Phone" value={selectedUser.phone} readOnly />
+                  <Input
+                    label="Website"
+                    value={selectedUser.website}
+                    readOnly
+                  />
+                  <Textarea
+                    label="Address"
+                    value={
+                      selectedUser.address.city +
+                      +selectedUser.address.street +
+                      selectedUser.address.suite +
+                      selectedUser.address.zipcode
+                    }
+                    readOnly
+                  />
+                </div>
+              )}
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                className="w-full"
+                color="danger"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Close
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </ScrollShadow>
     </div>
   );
 }
