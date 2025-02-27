@@ -55,7 +55,7 @@ export default function AppSidebar() {
               <div className="flex justify-center items-center mt-3 mb-3">
                 <Image
                   src="/anex.png"
-                  alt="Logo"
+                  alt="Anex logosu"
                   width={100}
                   height={40}
                   className="h-10 w-auto md:hidden lg:block"

@@ -39,14 +39,7 @@ const config: Config = {
 				bg: 'var(--anex-bg)',
 				accent:'var(--anex-accent)',
 			},
-			
-			areim: {
-				400: '#41466e',
-				300: '#303452', // Ensure this color is defined
-			},
-			areim_group: {
-				900: "#21232f",
-			},
+
   			popover: {
   				DEFAULT: 'hsl(var(--popover))',
   				foreground: 'hsl(var(--popover-foreground))'

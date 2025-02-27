@@ -75,9 +75,7 @@ export default function TasksPage() {
   return (
     <div className="dark grid grid-cols-[250px_1fr] min-h-screen bg-anex-bg text-white">
       {/* Sidebar */}
-      <aside className="text-white p-4">
         <AppSidebar />
-      </aside>
 
       {/* Ana İçerik */}
       <main className="p-4">
