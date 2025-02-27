@@ -50,7 +50,7 @@ export default function DataTable() {
   const [page, setPage] = useState(1);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const rowsPerPage = 5; // Updated to 10
+  const rowsPerPage = 10;
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -146,7 +146,6 @@ export default function DataTable() {
       </div>
 
       {/* Modal */}
-      <ScrollShadow className="w-[300px] h-[400px]">
         <Modal
           backdrop="blur"
           className="dark text-white"
@@ -195,7 +194,6 @@ export default function DataTable() {
             </ModalFooter>
           </ModalContent>
         </Modal>
-      </ScrollShadow>
     </div>
   );
 }

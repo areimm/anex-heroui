@@ -29,7 +29,7 @@ export default function Home() {
       </aside>
 
       <main className="px-3">
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4 mt-2">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-3 mt-2">
           <MonthChart />
           <DareaChart />
           <PieChart />

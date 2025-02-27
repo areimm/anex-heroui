@@ -9,10 +9,10 @@ import { Input, Spinner } from "@heroui/react";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function TasksPage() {
-  // 🟢 Auth kontrolü en üstte yapılmalı
+  // Auth kontrolü en üstte yapılmalı
   const { isLoading } = useAuth();
 
-  // 🟢 Tüm hooklar, render'ın başında çağrılmalı
+  // Tüm hooklar, render'ın başında çağrılmalı
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -48,7 +48,7 @@ export default function TasksPage() {
     },
   ]);
 
-  // 🟢 Auth kontrolü sonrası loading ekranı göster
+  // Auth kontrolü sonrası loading ekranı göster
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-anex-bg text-white">
@@ -57,7 +57,7 @@ export default function TasksPage() {
     );
   }
 
-  // 🟢 Drag & Drop işlemi
+  // Drag & Drop işlemi
   const handleDragEnd = (result: any) => {
     if (!result.destination) return;
 
