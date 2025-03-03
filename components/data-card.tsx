@@ -1,5 +1,4 @@
 import React from "react";
-import { Label } from "@/components/ui/label";
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
@@ -25,15 +24,11 @@ export default function CustomCard({
         {/* Kart İçeriği */}
         <CardHeader>
           <CardTitle className="text-black text-center">
-            <Label className=" text-1xl" htmlFor="name">
               {title}
-            </Label>
           </CardTitle>
         </CardHeader>
         <CardContent className="text-black text-center text-2xl font-bold p-2">
-          <Label className="text-1xl p-2" htmlFor="name">
             {value}
-          </Label>
         </CardContent>
       </Card>
     </div>

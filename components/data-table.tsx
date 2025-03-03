@@ -94,6 +94,7 @@ export default function DataTable() {
           Search
         </Button>
       </div>
+      <ScrollShadow className="" orientation="horizontal">
       <Table
         classNames={{ wrapper: "bg-anex-bg", th: "bg-anex-side" }}
         isStriped
@@ -104,6 +105,8 @@ export default function DataTable() {
           <TableColumn>NAME</TableColumn>
           <TableColumn>USERNAME</TableColumn>
           <TableColumn>EMAIL</TableColumn>
+          <TableColumn>WEBSITE</TableColumn>
+          <TableColumn>PHONE</TableColumn>
         </TableHeader>
         <TableBody>
           {paginatedUsers.map((user) => (
@@ -125,10 +128,14 @@ export default function DataTable() {
               </TableCell>
               <TableCell>{user.username}</TableCell>
               <TableCell>{user.email}</TableCell>
+              <TableCell>{user.website}</TableCell>
+              <TableCell>{user.phone}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+      </ScrollShadow>
+
       <div className="flex justify-between items-center mt-4">
         <span className="text-default-400 text-small">
           Total {filteredUsers.length} users
