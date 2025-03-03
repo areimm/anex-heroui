@@ -4,42 +4,39 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@heroui/button";
 import { Divider, Image, Input } from "@heroui/react";
-import { Tabs, Tab } from "@heroui/tabs";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Auth() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"login" | "register">("login");
+  const [isLogin, setIsLogin] = useState(true);
 
-  // Login state
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+  // Form state
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
 
-  // Register state
-  const [registerUsername, setRegisterUsername] = useState("");
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-
-  const handleLogin = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (loginEmail === "test@gmail.com" && loginPassword === "12345") {
-      localStorage.setItem("isLoggedIn", "true");
-      router.push("/home");
+    if (isLogin) {
+      // Login logic
+      if (email === "test@gmail.com" && password === "12345") {
+        localStorage.setItem("isLoggedIn", "true");
+        router.push("/home");
+      } else {
+        alert("Invalid credentials");
+      }
     } else {
-      alert("Invalid credentials");
+      // Register logic
+      console.log("Register Successful");
+      router.push("/home");
     }
   };
 
-  const handleRegister = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Register Successful");
-    router.push("/home");
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#a61a1e] via-[#7a1e4c] to-[#2e3192] animate-gradient-xy px-4">
-      <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl p-8 w-full max-w-md border border-white/20 transition-all duration-300 hover:shadow-2xl">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#171923] via-[#353a52] to-[#262a3a] animate-gradient-xy px-4">
+      <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl p-8 w-full max-w-md border border-white/20 transition-all duration-300 hover:shadow-2xl flex flex-col items-center">
         {/* Logo Section */}
-        <div className="flex flex-col items-center mb-6 space-y-3">
+        <div className="flex flex-col items-center mb-6 space-y-3 w-full">
           <Image
             src="/anex.png"
             alt="Logo"
@@ -50,23 +47,33 @@ export default function Auth() {
           <Divider className="h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent w-3/4" />
         </div>
 
-        {/* Tabs Section */}
-        <Tabs
-          selectedKey={activeTab}
-          onSelectionChange={(key) => setActiveTab(key as "login" | "register")}
-          aria-label="Auth Tabs"
-          className="group"
-          fullWidth
-        >
-          <Tab 
-            title={
-              <span className={`text-sm font-medium ${activeTab === 'login' ? 'text-white' : 'text-white/60'}`}>
-                Login
-              </span>
-            } 
-            key="login"
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={isLogin ? "login" : "register"}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="w-full"
           >
-            <form onSubmit={handleLogin} className="flex flex-col space-y-5 mt-6">
+            <form onSubmit={handleSubmit} className="space-y-5 w-full">
+              {!isLogin && (
+                <Input
+                  label="Username"
+                  size="sm"
+                  type="text"
+                  isRequired
+                  radius="sm"
+                  classNames={{
+                    input: "text-white/90",
+                    label: "text-white/70",
+                    inputWrapper: "bg-white/5 hover:bg-white/10 border-white/20"
+                  }}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              )}
+              
               <Input
                 label="Email"
                 size="sm"
@@ -76,12 +83,12 @@ export default function Auth() {
                 classNames={{
                   input: "text-white/90",
                   label: "text-white/70",
-                  innerWrapper: "bg-white/5",
                   inputWrapper: "bg-white/5 hover:bg-white/10 border-white/20"
                 }}
-                value={loginEmail}
-                onChange={(e) => setLoginEmail(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
+              
               <Input
                 label="Password"
                 size="sm"
@@ -91,90 +98,33 @@ export default function Auth() {
                 classNames={{
                   input: "text-white/90",
                   label: "text-white/70",
-                  innerWrapper: "bg-white/5",
                   inputWrapper: "bg-white/5 hover:bg-white/10 border-white/20"
                 }}
-                value={loginPassword}
-                onChange={(e) => setLoginPassword(e.target.value)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
 
               <Button
                 type="submit"
                 className="w-full bg-gradient-to-r from-[#a61a1e] to-[#2e3192] text-white hover:from-[#c71d22] hover:to-[#3b3fa3] transition-all duration-300 shadow-lg hover:shadow-xl rounded-lg py-3 font-semibold"
               >
-                Sign In
+                {isLogin ? "Sign In" : "Create Account"}
               </Button>
             </form>
-          </Tab>
+          </motion.div>
+        </AnimatePresence>
 
-          <Tab 
-            title={
-              <span className={`text-sm font-medium ${activeTab === 'register' ? 'text-white' : 'text-white/60'}`}>
-                Register
-              </span>
-            } 
-            key="register"
+        <p className="text-center mt-6 text-white/70 text-sm">
+          {isLogin ? "Hesabınız yok mu?" : "Zaten bir hesabınız var mı?"}
+          <button
+            onClick={() => setIsLogin(!isLogin)}
+            className="ml-2 text-white hover:text-white/80 transition-colors duration-300 font-semibold"
           >
-            <form onSubmit={handleRegister} className="flex flex-col space-y-5 mt-6">
-              <Input
-                label="Username"
-                size="sm"
-                type="text"
-                isRequired
-                radius="sm"
-                classNames={{
-                  input: "text-white/90",
-                  label: "text-white/70",
-                  innerWrapper: "bg-white/5",
-                  inputWrapper: "bg-white/5 hover:bg-white/10 border-white/20"
-                }}
-                value={registerUsername}
-                onChange={(e) => setRegisterUsername(e.target.value)}
-              />
-              <Input
-                label="Email"
-                size="sm"
-                type="email"
-                isRequired
-                radius="sm"
-                classNames={{
-                  input: "text-white/90",
-                  label: "text-white/70",
-                  innerWrapper: "bg-white/5",
-                  inputWrapper: "bg-white/5 hover:bg-white/10 border-white/20"
-                }}
-                value={registerEmail}
-                onChange={(e) => setRegisterEmail(e.target.value)}
-              />
-              <Input
-                label="Password"
-                size="sm"
-                type="password"
-                isRequired
-                radius="sm"
-                classNames={{
-                  input: "text-white/90",
-                  label: "text-white/70",
-                  innerWrapper: "bg-white/5",
-                  inputWrapper: "bg-white/5 hover:bg-white/10 border-white/20"
-                }}
-                value={registerPassword}
-                onChange={(e) => setRegisterPassword(e.target.value)}
-              />
-              <Button
-                type="submit"
-                className="w-full bg-gradient-to-r from-[#a61a1e] to-[#2e3192] text-white hover:from-[#c71d22] hover:to-[#3b3fa3] transition-all duration-300 shadow-lg hover:shadow-xl rounded-lg py-3 font-semibold"
-              >
-                Create Account
-              </Button>
-            </form>
-          </Tab>
-        </Tabs>
-
-      
+            {isLogin ? "Hesap Oluştur" : "Giriş Yap"}
+          </button>
+        </p>
       </div>
 
-      {/* Gradient animation style */}
       <style jsx global>{`
         @keyframes gradient-move {
           0% { background-position: 0% 50%; }
