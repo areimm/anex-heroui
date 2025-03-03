@@ -25,7 +25,6 @@ export default function AppSidebar() {
   const pathname = usePathname();
   const router = useRouter();
 
-  // 📌 İlk state'i pathname'e göre belirle
   const getCurrentKey = () => {
     const currentItem = items.find((item) => item.url === pathname);
     return currentItem ? currentItem.key : "home";

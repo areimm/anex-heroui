@@ -33,7 +33,7 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#171923] via-[#353a52] to-[#262a3a] animate-gradient-xy px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#171923] via-[#434a6b] to-[#262a3a] animate-gradient-xy px-4">
       <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl p-8 w-full max-w-md border border-white/20 transition-all duration-300 hover:shadow-2xl flex flex-col items-center">
         {/* Logo Section */}
         <div className="flex flex-col items-center mb-6 space-y-3 w-full">

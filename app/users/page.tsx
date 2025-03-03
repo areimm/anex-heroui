@@ -18,7 +18,7 @@ export default function Home() {
     );
   }
   return (
-    <div className="dark grid grid-cols-[250px_1fr] min-h-screen bg-anex-bg text-white">
+    <div className="dark  grid grid-cols-[250px_1fr] min-h-screen bg-anex-bg text-white">
         <AppSidebar  />
    
       <main className="">
