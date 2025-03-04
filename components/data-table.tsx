@@ -95,112 +95,109 @@ export default function DataTable() {
         </Button>
       </div>
       <ScrollShadow className="" orientation="horizontal">
-      <Table
-        classNames={{ wrapper: "bg-anex-bg", th: "bg-anex-side" }}
-        isStriped
-        aria-label="User Data Table"
-      >
-        <TableHeader>
-          <TableColumn>ID</TableColumn>
-          <TableColumn>NAME</TableColumn>
-          <TableColumn>USERNAME</TableColumn>
-          <TableColumn>EMAIL</TableColumn>
-          <TableColumn>WEBSITE</TableColumn>
-          <TableColumn>PHONE</TableColumn>
-        </TableHeader>
-        <TableBody>
-          {paginatedUsers.map((user) => (
-            <TableRow
-              key={user.id}
-              onClick={() => handleRowClick(user)}
-              className="cursor-pointer"
-            >
-              <TableCell>{user.id}</TableCell>
-              <TableCell>
-                <User
-                  avatarProps={{
-                    radius: "lg",
-                    src: `https://i.pravatar.cc/150?u=${user.id}`,
-                  }}
-                  name={user.name}
-                  description={user.email}
-                />
-              </TableCell>
-              <TableCell>{user.username}</TableCell>
-              <TableCell>{user.email}</TableCell>
-              <TableCell>{user.website}</TableCell>
-              <TableCell>{user.phone}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+        <Table
+          classNames={{ wrapper: "bg-anex-bg", th: "bg-anex-side" }}
+          isStriped
+          aria-label="User Data Table"
+        >
+          <TableHeader>
+            <TableColumn>ID</TableColumn>
+            <TableColumn>NAME</TableColumn>
+            <TableColumn>USERNAME</TableColumn>
+            <TableColumn>EMAIL</TableColumn>
+            <TableColumn>WEBSITE</TableColumn>
+            <TableColumn>PHONE</TableColumn>
+          </TableHeader>
+          <TableBody>
+            {paginatedUsers.map((user) => (
+              <TableRow
+                key={user.id}
+                onClick={() => handleRowClick(user)}
+                className="cursor-pointer"
+              >
+                <TableCell>{user.id}</TableCell>
+                <TableCell>
+                  <User
+                    avatarProps={{
+                      radius: "lg",
+                      src: `https://i.pravatar.cc/150?u=${user.id}`,
+                    }}
+                    name={user.name}
+                    description={user.email}
+                  />
+                </TableCell>
+                <TableCell>{user.username}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell>{user.website}</TableCell>
+                <TableCell>{user.phone}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </ScrollShadow>
 
-      <div className="flex justify-between items-center mt-4">
-        <span className="text-default-400 text-small">
+      <div className="flex justify-between items-center p-4 rounded-lg">
+        <span className="text-gray-600 text-sm font-medium">
           Total {filteredUsers.length} users
         </span>
         <Pagination
           initialPage={0}
-          isCompact
+          isCompact={false} // Daha geniş ve belirgin tasarım
           showControls
           showShadow
-          color="default"
+          variant="bordered"
           page={pages}
           total={pages}
           onChange={setPage}
+          className="flex gap-2"
         />
       </div>
 
       {/* Modal */}
-        <Modal
-          backdrop="blur"
-          className="dark text-white"
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        >
-          <ModalContent>
-            <ModalHeader>User Details</ModalHeader>
-            <ModalBody>
-              {selectedUser && (
-                <div className="flex flex-col gap-2">
-                  <Input label="Name" value={selectedUser.name} readOnly />
-                  <Input
-                    label="Username"
-                    value={selectedUser.username}
-                    readOnly
-                  />
-                  <Input label="Email" value={selectedUser.email} readOnly />
-                  <Input label="Phone" value={selectedUser.phone} readOnly />
-                  <Input
-                    label="Website"
-                    value={selectedUser.website}
-                    readOnly
-                  />
-                  <Textarea
-                    label="Address"
-                    value={
-                      selectedUser.address.city +
-                      +selectedUser.address.street +
-                      selectedUser.address.suite +
-                      selectedUser.address.zipcode
-                    }
-                    readOnly
-                  />
-                </div>
-              )}
-            </ModalBody>
-            <ModalFooter>
-              <Button
-                className="w-full"
-                color="danger"
-                onClick={() => setIsModalOpen(false)}
-              >
-                Close
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
+      <Modal
+        backdrop="blur"
+        className="dark text-white"
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      >
+        <ModalContent>
+          <ModalHeader>User Details</ModalHeader>
+          <ModalBody>
+            {selectedUser && (
+              <div className="flex flex-col gap-2">
+                <Input label="Name" value={selectedUser.name} readOnly />
+                <Input
+                  label="Username"
+                  value={selectedUser.username}
+                  readOnly
+                />
+                <Input label="Email" value={selectedUser.email} readOnly />
+                <Input label="Phone" value={selectedUser.phone} readOnly />
+                <Input label="Website" value={selectedUser.website} readOnly />
+                <Textarea
+                  label="Address"
+                  value={
+                    selectedUser.address.city +
+                    +selectedUser.address.street +
+                    selectedUser.address.suite +
+                    selectedUser.address.zipcode
+                  }
+                  readOnly
+                />
+              </div>
+            )}
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              className="w-full"
+              color="danger"
+              onClick={() => setIsModalOpen(false)}
+            >
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
