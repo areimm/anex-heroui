@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import * as React from "react";
 import {HeroUIProvider} from "@heroui/react";
-import { ToastProvider } from "@heroui/toast";
 
 
 

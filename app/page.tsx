@@ -5,6 +5,10 @@ import { useRouter } from "next/navigation";
 import { Button } from "@heroui/button";
 import { Divider, Image, Input } from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
+// icons import mail pass https://lucide.dev/icons/
+import { Mail, Lock } from "lucide-react";
+
+
 
 export default function Auth() {
   const router = useRouter();
@@ -64,10 +68,13 @@ export default function Auth() {
                   type="text"
                   isRequired
                   radius="sm"
+
                   classNames={{
                     input: "text-white/90",
                     label: "text-white/70",
                     inputWrapper: "bg-white/5 hover:bg-white/10 border-white/20"
+                    
+
                   }}
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -134,6 +141,15 @@ export default function Auth() {
         .animate-gradient-xy {
           background-size: 400% 400%;
           animation: gradient-move 15s ease infinite;
+        }
+
+          /* Change autocomplete styles */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active {
+          -webkit-box-shadow: none !important;
+          -webkit-text-fill-color: rgba(200, 200, 200, 0.9) !important;
         }
       `}</style>
     </div>
