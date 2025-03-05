@@ -51,7 +51,7 @@ export default function DataTable() {
   const [page, setPage] = useState(1);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const rowsPerPage = 10;
+  const rowsPerPage = 5;
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -96,109 +96,130 @@ export default function DataTable() {
         </Button>
       </div>
       {/* Tablo Alanı */}
-        <Table
-          classNames={{
-            // wrapper: "bg-anex-side/20 backdrop-blur-lg",
-            th: "bg-anex-bg/80 text-gray-300 text-sm font-semibold ",
-            td: "group-data-[hover=true]:bg-anex-primary/10 transition-colors",
-            tr: "hover:bg-anex-primary/5",
-          }}
-          removeWrapper
-          isHeaderSticky
-          aria-label="User Data Table"
-        >
-          <TableHeader className="">
-            <TableColumn className="py-5 text-center">ID</TableColumn>
-            <TableColumn className="py-5 pl-6">USER</TableColumn>
-            <TableColumn className="py-5">USERNAME</TableColumn>
-            <TableColumn className="py-5">EMAIL</TableColumn>
-            <TableColumn className="py-5">WEBSITE</TableColumn>
-            <TableColumn className="py-5 pr-6">PHONE</TableColumn>
-          </TableHeader>
-          <TableBody>
-            {paginatedUsers.map((user) => (
-              <TableRow
-                key={user.id}
-                onClick={() => handleRowClick(user)}
-                className="cursor-pointer border-b border-anex-primary/10 last:border-0"
-              >
-                <TableCell className="text-center">
-                  <span className="bg-anex-primary/10 text-anex-primary px-3 py-1 rounded-full text-xs font-medium">
-                    #{user.id}
-                  </span>
-                </TableCell>
-                <TableCell>
-                  <User
-                    avatarProps={{
-                      size: "sm",
-                      radius: "lg",
-                      src: `https://i.pravatar.cc/150?u=${user.id}`,
-                      className: "ring-2 ring-anex-primary/50",
-                    }}
-                    name={
-                      <span className="text-gray-200 font-medium">
-                        {user.name}
-                      </span>
-                    }
-                    description={
-                      <span className="text-gray-400 text-xs">
-                        {user.email}
-                      </span>
-                    }
-                  />
-                </TableCell>
-                <TableCell>
-                  <span className="text-gray-300 font-mono">
-                    @{user.username}
-                  </span>
-                </TableCell>
-                <TableCell>
-                  <span className="text-gray-400 hover:text-anex-primary transition-colors">
-                    {user.email}
-                  </span>
-                </TableCell>
-                <TableCell>
-                  <a
-                    href={`https://${user.website}`}
-                    target="_blank"
-                    className="text-anex-primary hover:text-anex-accent flex items-center gap-1"
-                  >
-                    {user.website}
-                  </a>
-                </TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-2 text-gray-400">
-                    <PhoneIcon className="w-4 h-4 shrink-0" />
-                    <span className="text-sm">{user.phone}</span>
-                  </div>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+      <Table
+        classNames={{
+          // wrapper: "bg-anex-side/20 backdrop-blur-lg",
+          th: "bg-anex-bg/80 text-gray-300 text-sm font-semibold ",
+          td: "group-data-[hover=true]:bg-anex-primary/10 transition-colors",
+          tr: "hover:bg-anex-primary/5  hover:bg-anex-side",
+        }}
+        removeWrapper
+        isHeaderSticky
+        aria-label="User Data Table"
+      >
+        <TableHeader className="">
+          <TableColumn className="py-5 text-center">ID</TableColumn>
+          <TableColumn className="py-5 pl-6">USER</TableColumn>
+          <TableColumn className="py-5">USERNAME</TableColumn>
+          <TableColumn className="py-5">EMAIL</TableColumn>
+          <TableColumn className="py-5">WEBSITE</TableColumn>
+          <TableColumn className="py-5 pr-6">PHONE</TableColumn>
+        </TableHeader>
+        <TableBody>
+          {paginatedUsers.map((user) => (
+            <TableRow
+              key={user.id}
+              onClick={() => handleRowClick(user)}
+              className="cursor-pointer border-b border-anex-primary/10 last:border-0"
+            >
+              <TableCell className="text-center">
+                <span className="bg-anex-primary/10 text-anex-primary px-3 py-1 rounded-full text-xs font-medium">
+                  #{user.id}
+                </span>
+              </TableCell>
+              <TableCell>
+                <User
+                  avatarProps={{
+                    size: "sm",
+                    radius: "lg",
+                    src: `https://i.pravatar.cc/150?u=${user.id}`,
+                    className: "ring-2 ring-anex-primary/50",
+                  }}
+                  name={
+                    <span className="text-gray-200 font-medium">
+                      {user.name}
+                    </span>
+                  }
+                  description={
+                    <span className="text-gray-400 text-xs">{user.email}</span>
+                  }
+                />
+              </TableCell>
+              <TableCell>
+                <span className="text-gray-300 font-mono">
+                  @{user.username}
+                </span>
+              </TableCell>
+              <TableCell>
+                <span className="text-gray-400 hover:text-anex-primary transition-colors">
+                  {user.email}
+                </span>
+              </TableCell>
+              <TableCell>
+                <a
+                  href={`https://${user.website}`}
+                  target="_blank"
+                  className="text-anex-primary hover:text-anex-accent flex items-center gap-1"
+                >
+                  {user.website}
+                </a>
+              </TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2 text-gray-400">
+                  <PhoneIcon className="w-4 h-4 shrink-0" />
+                  <span className="text-sm">{user.phone}</span>
+                </div>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
 
       {/* Pagination ve Footer */}
-      <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-anex-bg/50 rounded-xl backdrop-blur-lg border border-anex-primary/20 mt-2">
-        <span className="text-gray-400 text-sm mb-2 md:mb-0">
-          Showing {paginatedUsers.length} of {filteredUsers.length} users
+      <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-anex-bg/70 rounded-xl backdrop-blur-lg border border-anex-primary/20 mt-4 shadow-lg">
+        <span className="text-anex-primary/80 text-sm mb-2 md:mb-0 font-medium">
+          {paginatedUsers.length} / {filteredUsers.length} Sonuç
         </span>
+
         <Pagination
           classNames={{
-            item: "bg-transparent text-gray-400",
-            cursor: "bg-anex-primary/20 text-anex-primary",
-            prev: "hover:bg-anex-primary/10",
-            next: "hover:bg-anex-primary/10",
+            wrapper: "gap-2",
+            item: [
+              "bg-transparent",
+              "text-anex-primary/80",
+              "h-8 w-8",
+              "rounded-lg",
+              "transition-all",
+              "hover:bg-anex-primary/10",
+              "hover:scale-105",
+              "active:scale-95",
+              "border border-transparent",
+              "data-[hover=true]:border-anex-primary/20",
+            ],
+            cursor: [
+              "bg-anex-primary/20",
+              "text-anex-primary",
+              "font-semibold",
+              "shadow-sm",
+              "border border-anex-primary/30",
+              "hover:bg-anex-primary/30",
+            ],
+            prev: "bg-anex-primary/10 hover:bg-anex-primary/20 mr-2",
+            next: "bg-anex-primary/10 hover:bg-anex-primary/20 ml-2",
           }}
-          isCompact
-          showControls
-          total={pages}
           initialPage={1}
           page={page}
           onChange={setPage}
+          total={pages}
+          isCompact
+          showControls
+          showShadow
+          siblings={1}
+          boundaries={1}
         />
       </div>
 
-      {/* Modal (Düzenlenmiş versiyon) */}
+     
       <Modal
         backdrop="blur"
         className="dark text-white"
@@ -289,7 +310,8 @@ export default function DataTable() {
           </ModalBody>
           <ModalFooter className="border-t border-anex-primary/20">
             <Button
-              className="bg-anex-primary/20 text-anex-primary hover:bg-anex-primary/30"
+              variant="ghost"
+              className="text-anex-primary hover:bg-anex-primary/30 w-full"
               onClick={() => setIsModalOpen(false)}
             >
               Close
