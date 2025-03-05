@@ -122,12 +122,12 @@ export default function Auth() {
         </AnimatePresence>
 
         <p className="text-center mt-6 text-white/70 text-sm">
-          {isLogin ? "Hesabınız yok mu?" : "Zaten bir hesabınız var mı?"}
+            {isLogin ? "Don't have an account?" : "Already have an account?"}
           <button
             onClick={() => setIsLogin(!isLogin)}
             className="ml-2 text-white hover:text-white/80 transition-colors duration-300 font-semibold"
           >
-            {isLogin ? "Hesap Oluştur" : "Giriş Yap"}
+            {isLogin ? "Create Account" : "Sign In"}
           </button>
         </p>
       </div>

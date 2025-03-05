@@ -5,8 +5,6 @@ import * as React from "react";
 import {HeroUIProvider} from "@heroui/react";
 
 
-
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
