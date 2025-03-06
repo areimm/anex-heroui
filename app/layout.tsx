@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import * as React from "react";
 import {HeroUIProvider} from "@heroui/react";
+import clsx from "clsx";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
     
-      <body className={inter.className}><HeroUIProvider>{children}</HeroUIProvider></body>
+      <body className={clsx(inter.className, "bg-anex-bg")}><HeroUIProvider>{children}</HeroUIProvider></body>
     </html>
   );
 }
