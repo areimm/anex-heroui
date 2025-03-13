@@ -151,11 +151,11 @@ export default function Chart() {
   });
 
   return (
-    <Card className="bg-anex-side text-white">
+    <Card className="bg-anex-side text-white flex flex-col w-full">
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
         <div className="grid flex-1 gap-1 text-center sm:text-left">
-          <CardTitle>Alan grafiği</CardTitle>
-          <CardDescription>Son 3 aya ait veriler gösteriliyor.</CardDescription>
+          <CardTitle>Area Chart</CardTitle>
+          <CardDescription>Data from the last 3 months is displayed.</CardDescription>
         </div>
         <Select value={timeRange} onValueChange={setTimeRange}>
           <SelectTrigger
@@ -166,21 +166,21 @@ export default function Chart() {
           </SelectTrigger>
           <SelectContent className="rounded-xl">
             <SelectItem value="90d" className="rounded-lg">
-              Son 3 ay
+              Last 3 months
             </SelectItem>
             <SelectItem value="30d" className="rounded-lg">
-              Son 30 gün
+              Last 30 days
             </SelectItem>
             <SelectItem value="7d" className="rounded-lg">
-              Son 7 gün
+              Last 7 days
             </SelectItem>
           </SelectContent>
         </Select>
       </CardHeader>
-      <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
+      <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6 flex-1">
         <ChartContainer
           config={chartConfig}
-          className="aspect-auto h-[400px] w-full"
+          className="aspect-auto h-full w-full"
         >
           <AreaChart data={filteredData}>
             <defs>
@@ -235,6 +235,7 @@ export default function Chart() {
                     });
                   }}
                   indicator="dot"
+                  animationDuration={100}
                 />
               }
             />
@@ -252,7 +253,7 @@ export default function Chart() {
               stroke="var(--color-desktop)"
               stackId="a"
             />
-            <ChartLegend content={<ChartLegendContent />} />
+            <ChartLegend content={<ChartLegendContent  />} />
           </AreaChart>
         </ChartContainer>
       </CardContent>

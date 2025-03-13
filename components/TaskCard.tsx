@@ -13,7 +13,6 @@ interface TaskCardProps {
   showDate?: boolean;
 }
 
-// 📌 Duruma göre renkler (Sol altta yuvarlak alan için)
 const statusColors = {
   todo: "bg-red-500",
   inprogress: "bg-yellow-500",
@@ -31,18 +30,15 @@ export default function TaskCard({ title, description, status, assignedTo, deadl
             <h3 className="text-white font-medium">{title}</h3>
           </div>
 
-          {/* More Options Icon */}
           <MoreVertical className="w-5 h-5 text-gray-400 cursor-pointer" onClick={() => setModalOpen(true)} />
         </CardContent>
 
-        {/* 📌 Kartın Sağ Alt Köşesinde Tarih Gösterme */}
         {showDate && (
           <div className="absolute bottom-2 right-2 text-xs text-gray-400">
             {new Date(deadline).toLocaleDateString("tr-TR")}
           </div>
         )}
 
-        {/* 📌 Kartın Sol Alt Köşesinde Renk Alanı (Senin Eklediğin) */}
         <div className={`absolute bottom-0 left-0 w-6 h-6 ${statusColors[status]} rounded-r-lg`}></div>
 
         {/* Modal */}

@@ -15,13 +15,14 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+
 const chartData = [
-  { month: "Ocak", desktop: 186, mobile: 80 },
-  { month: "Şubat", desktop: 305, mobile: 200 },
-  { month: "Mart", desktop: 237, mobile: 120 },
-  { month: "Nisan", desktop: 73, mobile: 190 },
-  { month: "Mayıs", desktop: 209, mobile: 130 },
-  { month: "Haziran", desktop: 214, mobile: 140 },
+  { month: "January", desktop: 186, mobile: 80 },
+  { month: "February", desktop: 305, mobile: 200 },
+  { month: "March", desktop: 237, mobile: 120 },
+  { month: "April", desktop: 73, mobile: 190 },
+  { month: "May", desktop: 209, mobile: 130 },
+  { month: "June", desktop: 214, mobile: 140 },
 ];
 
 const chartConfig = {

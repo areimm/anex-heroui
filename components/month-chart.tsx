@@ -43,7 +43,7 @@ export default function Component() {
   return (
     <Card className="bg-anex-side border-gray-800 text-white">
       <CardHeader>
-        <CardTitle>Bar Chart - Stacked + Legend</CardTitle>
+        <CardTitle>Bar Chart - Stacked + Annotated</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
@@ -57,7 +57,7 @@ export default function Component() {
               axisLine={false}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+            <ChartTooltip content={<ChartTooltipContent hideLabel animationDuration={100}  />} />
             <ChartLegend content={<ChartLegendContent />} />
             <Bar
               dataKey="desktop"
@@ -76,10 +76,10 @@ export default function Component() {
       </CardContent>
       {/* <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+          This month shows a 5.2% increase <TrendingUp className="h-4 w-4" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
+          Shows the total number of visitors in the last 6 months
         </div>
       </CardFooter> */}
     </Card>

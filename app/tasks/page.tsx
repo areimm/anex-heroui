@@ -87,7 +87,7 @@ export default function TasksPage() {
             placeholder="Search by name..."
             className="flex-1 col-span-2"
           />
-          <Button className="flex items-center gap-2 col-span-1">
+          <Button className="bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-950 flex-1 h-full col-span-1">
             <Plus className="w-5 h-5" />
             Yeni Görev Ekle
           </Button>

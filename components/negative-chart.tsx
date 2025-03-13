@@ -17,6 +17,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
+
 const chartData = [
   { month: "January", visitors: 186 },
   { month: "February", visitors: 205 },
@@ -29,6 +30,7 @@ const chartData = [
 const chartConfig = {
   visitors: {
     label: "Visitors",
+    color: "#fffff",
   },
   desktop: {
     label: "Desktop",
@@ -48,7 +50,7 @@ export default function Component() {
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig}>
+        <ChartContainer className="transition-all duration-100" config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <ChartTooltip
@@ -56,9 +58,9 @@ export default function Component() {
               content={<ChartTooltipContent hideLabel hideIndicator />}
             />
             <Bar dataKey="visitors">
-              <LabelList position="top" dataKey="month" fillOpacity={1} />
+              <LabelList className="fill-gray-400"  position="top" dataKey="month" fillOpacity={1} />
               {chartData.map((item) => (
-                <Cell
+                <Cell 
                   key={item.month}
                   fill={
                     item.visitors > 0

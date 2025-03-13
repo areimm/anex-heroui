@@ -8,8 +8,6 @@ import { motion, AnimatePresence } from "framer-motion";
 // icons import mail pass https://lucide.dev/icons/
 import { Mail, Lock } from "lucide-react";
 
-
-
 export default function Auth() {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(true);
@@ -22,7 +20,6 @@ export default function Auth() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isLogin) {
-      // Login logic
       if (email === "test@gmail.com" && password === "12345") {
         localStorage.setItem("isLoggedIn", "true");
         router.push("/home");
@@ -30,7 +27,6 @@ export default function Auth() {
         alert("Invalid credentials");
       }
     } else {
-      // Register logic
       console.log("Register Successful");
       router.push("/home");
     }
@@ -68,19 +64,17 @@ export default function Auth() {
                   type="text"
                   isRequired
                   radius="sm"
-
                   classNames={{
-                    input: "text-white/90",
+                    input: "!text-[#919191]",
                     label: "text-white/70",
-                    inputWrapper: "bg-white/5 hover:bg-white/10 border-white/20"
-                    
-
+                    inputWrapper:
+                      "bg-white/5 hover:bg-white/10 border-white/20",
                   }}
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
               )}
-              
+
               <Input
                 label="Email"
                 size="sm"
@@ -88,14 +82,14 @@ export default function Auth() {
                 isRequired
                 radius="sm"
                 classNames={{
-                  input: "text-white/90",
-                  label: "text-white/70",
-                  inputWrapper: "bg-white/5 hover:bg-white/10 border-white/20"
+                  input: "!text-[#919191]",
+                  label: "text-white",
+                  inputWrapper: `bg-white/5 hover:bg-white/10 data-[has-value=true]:bg-white/10 border-white/2`,
                 }}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              
+
               <Input
                 label="Password"
                 size="sm"
@@ -103,9 +97,10 @@ export default function Auth() {
                 isRequired
                 radius="sm"
                 classNames={{
-                  input: "text-white/90",
-                  label: "text-white/70",
-                  inputWrapper: "bg-white/5 hover:bg-white/10 border-white/20"
+                  input: "!text-[#919191]",
+                  label: "text-white",
+                  inputWrapper: "bg-white/5 hover:bg-white/10 border-white/2 text-red-500",
+                  
                 }}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -122,7 +117,7 @@ export default function Auth() {
         </AnimatePresence>
 
         <p className="text-center mt-6 text-white/70 text-sm">
-            {isLogin ? "Don't have an account?" : "Already have an account?"}
+          {isLogin ? "Don't have an account?" : "Already have an account?"}
           <button
             onClick={() => setIsLogin(!isLogin)}
             className="ml-2 text-white hover:text-white/80 transition-colors duration-300 font-semibold"
@@ -134,19 +129,25 @@ export default function Auth() {
 
       <style jsx global>{`
         @keyframes gradient-move {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
         }
         .animate-gradient-xy {
           background-size: 400% 400%;
           animation: gradient-move 15s ease infinite;
         }
 
-          /* Change autocomplete styles */
+        /* Change autocomplete styles */
         input:-webkit-autofill,
-        input:-webkit-autofill:hover, 
-        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
         input:-webkit-autofill:active {
           -webkit-box-shadow: none !important;
           -webkit-text-fill-color: rgba(200, 200, 200, 0.9) !important;
